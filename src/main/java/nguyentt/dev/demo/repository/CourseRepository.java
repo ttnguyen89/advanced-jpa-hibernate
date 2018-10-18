@@ -4,10 +4,12 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import nguyentt.dev.demo.entity.Course;
 
 @Repository
+@Transactional
 public class CourseRepository {
 
 

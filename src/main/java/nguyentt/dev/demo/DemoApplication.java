@@ -24,9 +24,5 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Course course = courseRepository.findById(10001L);
-		
-		logger.info("Course -> {}", course);
-		courseRepository.deleteById(10001L);
 	}
 }
