@@ -18,18 +18,30 @@ import nguyentt.dev.demo.entity.Course;
 public class CourseRepositoryTest {
 
 	@Autowired
-	private CourseRepository courseRepository;
+	private CourseRepository repo;
 	
 	@Test
 	public void loadCourse_returnCourseExpectedCourseName() {
-		Course course = courseRepository.findById(10001L);
+		Course course = repo.findById(10001L);
 		assertEquals("JPA in 50 Steps", course.getName());
 	}
 	
 	@Test
 	@DirtiesContext
 	public void deleteById_theCourseIsDeleted() {
-		courseRepository.deleteById(10002L);
-		assertNull(courseRepository.findById(10002L));
+		repo.deleteById(10002L);
+		assertNull(repo.findById(10002L));
+	}
+	
+	@Test
+	@DirtiesContext
+	public void saveCourse() {
+		Course course = repo.findById(10001L);
+		course.setName("JPA in 50 Steps - updated");
+		
+		repo.save(course);
+		
+		Course updatedCourse = repo.findById(10001L);
+		assertEquals("JPA in 50 Steps - updated", updatedCourse.getName());
 	}
 }

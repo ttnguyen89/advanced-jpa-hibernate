@@ -24,5 +24,7 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		courseRepository.save(new Course("Microservices in 100 Steps"));
 	}
 }
